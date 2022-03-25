@@ -27,6 +27,13 @@ view: grace_0325 {
     sql: ${TABLE}.`In` ;;
   }
 
+  dimension: suncount {
+    type: number
+    sql: ${TABLE}.`In`  + ${TABLE}.Out ;;
+  }
+
+
+
   dimension: line {
     type: number
     sql: ${TABLE}.Line ;;
