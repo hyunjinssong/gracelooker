@@ -32,7 +32,18 @@ view: grace_0325 {
     sql: ${TABLE}.`In`  + ${TABLE}.Out ;;
   }
 
-
+  dimension: difference {
+    type: number
+    value_format_name: percent_0
+    sql: (${TABLE}.`In`  / ${TABLE}.Out) - 1 ;;
+    html: {% if value > 0 %}
+         <p style="color: #990000">▲  {{ rendered_value }}</p>
+      {% elsif value < 0 %}
+        <p style="color: #009900">▼  {{ rendered_value }}</p>
+      {% else %}
+        <p style="color: #000000">{{ rendered_value }}</p>
+      {% endif %} ;;
+  }
 
   dimension: line {
     type: number
